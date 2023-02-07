@@ -1,0 +1,73 @@
+<button class="btn" mat-icon-button aria-label="close dialog" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  
+  
+      <form [formGroup]="myForm">
+          <div class="form00-div">      
+            <div class="label-div">
+              <mat-label>
+                Full Name: <span style="color: red;">*</span> 
+              </mat-label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" formControlName="FullName" ngDefaultControl  name='fullName'>
+                      <input matInput  type="text">
+                  </mat-form-field>
+            </div>
+          </div>
+          <div class="form01-div">    
+            <div class="label-div">
+              <mat-label>
+                Email Address: <span style="color: red;">*</span> 
+              </mat-label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" formControlName="EmailAdd" ngDefaultControl  name='EmailAdd'>
+                      <input matInput  type="text">
+                  </mat-form-field>
+            </div>
+          </div>
+          <div class="form02-div">    
+            <div class="label-div">
+              <mat-label>
+                Password: <span style="color: red;">*</span> 
+              </mat-label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" formControlName="Password" ngDefaultControl  name='Password'>
+                      <input matInput  type="text">
+                  </mat-form-field>
+            </div>
+          </div>
+          <div class="form03-div">    
+            <div class="label-div">
+              <mat-label>
+                Address: <span style="color: red;">*</span> 
+              </mat-label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" formControlName="Address" ngDefaultControl  name='Address'>
+                      <input matInput  type="text">
+                  </mat-form-field>
+            </div>
+          </div>
+          <div class="form04-div">    
+            <div class="label-div">
+              <mat-label>
+                Contact No: <span style="color: red;">*</span> 
+              </mat-label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" formControlName="ContactNo" ngDefaultControl  name='ContactNo'> 
+                      <input matInput  type="number">
+                  </mat-form-field>
+            </div>
+          </div>
+        <mat-dialog-actions>
+        <div class="btn-div">
+            <button mat-raised-button class="buttondiv" type="reset" (click)='submit()'>Save</button>
+          </div>
+        </mat-dialog-actions>
+      
+        </form>

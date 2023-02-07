@@ -1,0 +1,126 @@
+<div class="heading-head">
+
+    <mat-toolbar class='heading-class' color="primary">
+    <span>Report</span>
+    </mat-toolbar>
+
+
+    <mat-form-field appearance="fill" class="dateRange">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date" (dateChange)="search()">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+
+          <mat-form-field appearance="fill" class="dateRange">
+              <mat-label>Select Main Item</mat-label>
+              <mat-select (selectionChange)="onChange($event.value)" name="food" [disabled]="isDisableMainitem">
+                <mat-option *ngFor="let mainItemName of AllMainItems; index as i;" [value]="mainItemName._id">
+                  {{mainItemName.mainItemName}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="dateRange">
+            <mat-label>Select Sub Item</mat-label>
+            <mat-select (selectionChange)="onChangeSubItems($event.value)" name="food" [disabled]="isDisableSubitem">
+              <mat-option *ngFor="let subItemName of AllSubItems; index as i;" [value]="subItemName._id">
+                {{subItemName.subItemName}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="dateRange" appearance="fill">
+          <mat-label>Search by Order Number</mat-label>
+          <input matInput type="text" [(ngModel)]="serachByOrder" (keydown.enter)="searchByOrder()">
+        </mat-form-field>
+
+
+      <!-- <mat-form-field appearance="fill" class="dateRange">
+        <mat-label>Select Sub Item</mat-label>
+        <mat-select [(ngModel)]="selectedCar" name="car">
+            <mat-option *ngFor="let car of cars" [value]="car.value">
+                {{car.viewValue}}
+              </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      
+      <button class="btn-class" mat-raised-button color="primary" (click)="getReports()" >Search</button>
+      <!-- <p>Selected range: {{range.value | json}}</p> -->
+
+      <div class="tableDiv" id="myTableElementId">
+        <!-- <div class="ButtonDiv">
+            <button class="UserButtonDiv" mat-button (click)="openDialog()">Add New User</button>
+          </div> -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Order Date </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> {{getDate(element.orderDate)}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Order Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.orderNumber}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="SubItemname">
+              <th mat-header-cell *matHeaderCellDef> Main Item </th>
+              <td mat-cell *matCellDef="let element"> {{element.items.mainItem.mainItemName}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+          <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Sub Item </th>
+              <td mat-cell *matCellDef="let element"> {{element.items.subItemName}} </td>
+            </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element">{{element.items.subItemPrice}}</td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th> 
+            <td mat-cell *matCellDef="let element">{{element.items.qtyTotal}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="symbol1">
+            <th mat-header-cell *matHeaderCellDef> Total Amount </th> 
+            <td mat-cell *matCellDef="let element">{{element.totalAmount}}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <div class="pagination-div">
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons 
+            aria-label="Select page of periodic elements">
+            </mat-paginator>
+          </div>
+
+        </div> -->
+
+
+    </div>
+
+    <div class="exportBtnClass">
+    <button class="btn-class" mat-raised-button color="primary" (click)="export()" >Export</button>
+    </div>
+</div>

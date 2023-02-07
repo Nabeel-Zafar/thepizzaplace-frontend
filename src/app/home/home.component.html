@@ -1,0 +1,46 @@
+<div class="mainDiv">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name" style="margin-right: 1100px;">The Pizza Place</h1>
+        <mat-icon (click)="logout()" style="cursor: pointer;" >power_settings_new</mat-icon>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-container" autosize>
+        <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+            <mat-nav-list>
+                <!-- <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+                    <span class="full-width" *ngIf="isExpanded || isShowing">General Setting</span>
+                    <mat-icon mat-list-icon>settings</mat-icon>
+                    <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+                </mat-list-item> -->
+                <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+                    <a mat-list-item [routerLink]="'/addMainItem'">Add Main Item</a>
+                    <a mat-list-item [routerLink]="'/addSubItem'">Add Sub Item</a>
+                    <a mat-list-item [routerLink]="'/createDeals'">Create Deals</a> -->
+                    <!-- <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+                        <span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+                        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+                    </mat-list-item>
+                    <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+                        <mat-list-item>SubSubmenu Item 1</mat-list-item>
+                        <mat-list-item>SubSubmenu Item 2</mat-list-item>
+                    </div> -->
+                <!-- </div> -->
+                <mat-list-item [routerLink]="'/home/addMainItem'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>fastfood</mat-icon>Add Main Item</mat-list-item>
+                <mat-list-item [routerLink]="'/home/addSubItem'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>fastfood</mat-icon>Add Sub Item</mat-list-item>
+                <!-- <mat-list-item [routerLink]="'/createDeals'"><mat-icon mat-list-icon>fastfood</mat-icon>Create Deals</mat-list-item> -->
+                <mat-list-item [routerLink]="'/home/ordering'"><mat-icon mat-list-icon>local_dining</mat-icon>Take Order</mat-list-item>
+                <mat-list-item [routerLink]="'/home/createUser'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>supervisor_account</mat-icon>Create User</mat-list-item>
+                <mat-list-item [routerLink]="'/home/report'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>assignment</mat-icon>Report</mat-list-item>    
+
+            </mat-nav-list>
+            
+            
+        </mat-sidenav>
+    
+        <!-- <div class="example-sidenav-content"> -->
+            <!-- <app-add-main-item></app-add-main-item> -->
+        <router-outlet></router-outlet>
+        <!-- </div> -->
+    
+    </mat-sidenav-container>
+</div>

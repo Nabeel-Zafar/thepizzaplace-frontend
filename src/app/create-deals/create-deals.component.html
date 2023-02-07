@@ -1,0 +1,83 @@
+
+    <div class="heading-head">
+
+        <mat-toolbar class='heading-class'color="primary">
+        <span>Create Deals</span>
+        </mat-toolbar>
+    
+        <form class="example-form" [formGroup]="dealForm">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Deal Name</mat-label>
+              <input matInput formControlName="dealName">
+            </mat-form-field>
+            <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Add Deal Items</mat-label>
+                <textarea matInput formControlName="dealItem"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Deal Price</mat-label>
+                <input matInput type="number" formControlName="dealPrice">
+            </mat-form-field>
+
+            <button class="btn-class" mat-raised-button (click)="onSubmitdealsForm()" color="primary" *ngIf="!dealsDisabled">Add Deal</button>
+            <div *ngIf="dealsDisabled">
+              <button class="btn-class" mat-raised-button color="primary" style="display: inline;" (click)="onEdit()">Edit</button>
+              <button class="btn-class" mat-raised-button color="primary" style="display: inline; margin-left: 20px;" (click)="onCancelEdit()">Cancel</button>
+            </div>
+
+          </form>
+    
+          <div class="tableDiv">
+    
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+            
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Deal Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.dealName}} </td>
+              </ng-container>
+  
+              <!-- Name Column -->
+              <ng-container matColumnDef="SubItemname">
+                  <th mat-header-cell *matHeaderCellDef> Deal Items </th>
+                  <td mat-cell *matCellDef="let element"> {{element.dealItem}} </td>
+                </ng-container>
+  
+                <!-- Name Column -->
+              <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef> Price </th>
+                  <td mat-cell *matCellDef="let element"> {{element.dealPrice}} </td>
+                </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element"><mat-icon (click)="edit(element)" style="cursor: pointer">edit</mat-icon></td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                <td mat-cell *matCellDef="let element"> <mat-icon>delete</mat-icon> </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      
+            </div>
+    
+    
+        </div>
+    
+    

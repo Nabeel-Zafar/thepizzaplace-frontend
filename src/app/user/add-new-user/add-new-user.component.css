@@ -1,0 +1,58 @@
+.add-new-user-header{
+    display: flex;
+    align-items: center;
+    background: #0d476f;
+    color: #ffff;
+    margin-top: 0px;
+    margin-bottom: 7%;
+    height: 45px;
+}
+.form00-div{
+    display: flex;
+    width: 102%;
+}
+.form01-div{
+    display: flex;
+    width: 100%;
+}
+.form02-div{
+    display: flex;
+    width: 100%;
+}
+.form03-div{
+    display: flex;
+    width: 107%;
+}
+.form04-div{
+    display: flex;
+    width: 100%;
+}
+.label-div{
+    margin-right: 10%;
+    margin-top: 6%;
+}
+.custom-dialog-container .mat-dialog-container {
+    overflow-y: hidden;
+  }
+.btn-div{
+    width: 67px;
+    margin: auto;
+  }
+  .dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn{
+    /* margin-left: 352px !important; */
+    margin-left: 250px !important;
+}
+.mat-form-field ::ng-deep .mat-form-field-outline{
+    color: #0d476f;
+  }
+
+.buttondiv{
+    background-color: #0d476f;
+    /* background-color: #3889c2; */
+    color: white;
+}

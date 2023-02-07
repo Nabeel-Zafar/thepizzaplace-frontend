@@ -1,0 +1,69 @@
+<div class="heading-head hidden-print">
+
+  <mat-toolbar class='heading-class' color="primary">
+    <span>Order</span>
+  </mat-toolbar>
+
+  <mat-expansion-panel class="expansionpanel-table" *ngFor="let item of allMenu">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="font-Size-tab">{{item._id.Name}}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-selection-list *ngFor="let subItems of item.subItems">
+      <mat-list-option (click)="onClick($event,subItems)">
+        <!-- [selected]="selectedRole.RightsTitle.indexOf(role) !== -1 ? true : false" -->
+        {{subItems.subItemName+ " | " + "Rs."+ subItems.subItemPrice }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+
+  <div class="cartClass">
+    <mat-card class="example-card">
+      <mat-card-title>Cart</mat-card-title>
+      <mat-card-content>
+        <mat-list role="list" *ngFor="let subItems of subItemsArray">
+          <mat-list-item role="listitem" style="display: -webkit-inline-box; width: 50%;">{{subItems.subItemName+ " | "
+            + "Rs."+ subItems.subItemPrice }}</mat-list-item>
+          <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="subItems.qtyTotal" value="{{ subItems.qtyTotal }}"
+              style="display: -webkit-inline-box;" min="1" type="number" pattern="^[1-9][0-9]*$"  name=""
+              class="form-control" />
+          </mat-form-field>
+        </mat-list>
+        <hr>
+        <h3>Total Amount : <b>RS {{total()}} /-</b></h3>
+      </mat-card-content>
+      <mat-card-actions style="display: flex; justify-content: center;">
+
+        <button mat-button style="background-color: #3f51b5; color: white;" (click)="onSubmitSubItemForm()">Place Order</button>
+        <!-- <button mat-button>SHARE</button> -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div class="ticket" id="printSlip">
+  <!-- <img src="./logo.png" alt="Logo"> -->
+  <p class="centered">The Pizza Place
+      <br>Order No :{{this.orderNumber}}
+      <br>Order Date: {{getDate(this.orderDate)}}</p>
+  <table>
+      <thead>
+          <tr>
+              <th class="quantity">Q.</th>
+              <th class="description">Description</th>
+              <th class="price">$$</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let items of subItemsArray">
+              <td class="quantity">{{items.qtyTotal}}</td>
+              <td class="description">{{items.subItemName}}</td>
+              <td class="price">{{items.subItemPrice}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <p class="centered">Thanks for ordering!
+      <br>thepizzaplace.com</p>
+</div>

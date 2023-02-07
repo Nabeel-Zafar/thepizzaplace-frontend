@@ -1,0 +1,101 @@
+
+    <div class="heading-head">
+
+        <mat-toolbar class='heading-class'color="primary">
+        <span>Add Sub Item</span>
+        </mat-toolbar>
+    
+        
+
+            <!-- <mat-form-field appearance="fill" formControlName="mainItemName">
+                <mat-label>Select Main Item</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="food">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Select Main Item</mat-label>
+              <mat-select (selectionChange)="onChange($event.value)" name="food" [disabled]="subItemDisabled">
+                <mat-option *ngFor="let mainItemName of AllMainItems; index as i;" [value]="mainItemName._id">
+                  {{mainItemName.mainItemName}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+            
+            <form class="example-form" [formGroup]="subItemForm">
+
+              
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Sub Item Name *</mat-label>
+              <input matInput type="text" formControlName="subItemName">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Add Price *</mat-label>
+                <input matInput formControlName="subItemPrice">
+              </mat-form-field>
+        
+            <button class="btn-class" mat-raised-button (click)="onSubmitSubItemForm()" color="primary" *ngIf="!subItemDisabled">Add Item</button>
+            <div *ngIf="subItemDisabled">
+            <button class="btn-class" mat-raised-button color="primary" style="display: inline;" (click)="onEdit()">Edit</button>
+            <button class="btn-class" mat-raised-button color="primary" style="display: inline; margin-left: 20px;" (click)="onCancelEdit()">Cancel</button>
+          </div>
+          </form>
+    
+          <div class="tableDiv">
+    
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Item Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.mainItem.mainItemName}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="SubItemname">
+                <th mat-header-cell *matHeaderCellDef> Sub Item Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.subItemName}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell type="number" *matCellDef="let element"> {{element.subItemPrice}} </td>
+              </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Edit </th>
+              <td mat-cell *matCellDef="let element"><mat-icon style="cursor: pointer;" (click)="edit(element)">edit</mat-icon></td>
+            </ng-container>
+
+          
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Delete </th>
+              <td mat-cell *matCellDef="let element"> <mat-icon>delete</mat-icon> </td>
+            </ng-container> -->
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    
+          </div>
+    
+    
+        </div>
+    
+    
