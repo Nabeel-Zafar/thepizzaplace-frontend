@@ -36,7 +36,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { ExportAsModule } from 'ngx-export-as';
-
+import {NgxPrintModule} from 'ngx-print';
+import { PrintSlipDialogComponent } from './ordering/print-slip-dialog/print-slip-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -54,7 +55,8 @@ export function tokenGetter() {
     UserComponent,
     AddNewUserComponent,
     ReportComponent,
-    ToastComponent
+    ToastComponent,
+    PrintSlipDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,7 @@ export function tokenGetter() {
     MatNativeDateModule,
     MatSnackBarModule,
     ExportAsModule,
+    NgxPrintModule,
     JwtModule.forRoot({
       config:{
         tokenGetter:() => {

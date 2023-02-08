@@ -27,7 +27,7 @@
                 <!-- </div> -->
                 <mat-list-item [routerLink]="'/home/addMainItem'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>fastfood</mat-icon>Add Main Item</mat-list-item>
                 <mat-list-item [routerLink]="'/home/addSubItem'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>fastfood</mat-icon>Add Sub Item</mat-list-item>
-                <!-- <mat-list-item [routerLink]="'/createDeals'"><mat-icon mat-list-icon>fastfood</mat-icon>Create Deals</mat-list-item> -->
+                <!-- <mat-list-item [routerLink]="'/home/createDeals'"><mat-icon mat-list-icon>fastfood</mat-icon>Create Deals</mat-list-item> -->
                 <mat-list-item [routerLink]="'/home/ordering'"><mat-icon mat-list-icon>local_dining</mat-icon>Take Order</mat-list-item>
                 <mat-list-item [routerLink]="'/home/createUser'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>supervisor_account</mat-icon>Create User</mat-list-item>
                 <mat-list-item [routerLink]="'/home/report'" *ngIf="this.userStatus.status.IsAdmin == 'Yes'"><mat-icon mat-list-icon>assignment</mat-icon>Report</mat-list-item>    

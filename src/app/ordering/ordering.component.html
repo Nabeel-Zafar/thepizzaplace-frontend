@@ -42,28 +42,3 @@
     </mat-card>
   </div>
 </div>
-
-<div class="ticket" id="printSlip">
-  <!-- <img src="./logo.png" alt="Logo"> -->
-  <p class="centered">The Pizza Place
-      <br>Order No :{{this.orderNumber}}
-      <br>Order Date: {{getDate(this.orderDate)}}</p>
-  <table>
-      <thead>
-          <tr>
-              <th class="quantity">Q.</th>
-              <th class="description">Description</th>
-              <th class="price">$$</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let items of subItemsArray">
-              <td class="quantity">{{items.qtyTotal}}</td>
-              <td class="description">{{items.subItemName}}</td>
-              <td class="price">{{items.subItemPrice}}</td>
-          </tr>
-      </tbody>
-  </table>
-  <p class="centered">Thanks for ordering!
-      <br>thepizzaplace.com</p>
-</div>

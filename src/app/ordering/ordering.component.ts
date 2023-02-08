@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { SnackbarService } from '../services/snackbar.service';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { PrintSlipDialogComponent } from './print-slip-dialog/print-slip-dialog.component';
+
 
 @Component({
   selector: 'app-ordering',
@@ -39,7 +42,7 @@ export class OrderingComponent implements OnInit {
       ]
     }
   ];
-  constructor(private orderService: OrderService,private snackbar: SnackbarService) { }
+  constructor(private orderService: OrderService,private snackbar: SnackbarService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.readOrders();
@@ -76,17 +79,26 @@ export class OrderingComponent implements OnInit {
 
   }
 
-  placeOrder(){
-    window.print()
-  }
-
   getDate(date:any){
     var nDate=new Date(date)
     return nDate.getDate()+"/"+(nDate.getMonth()+1)+"/"+nDate.getFullYear();
   }
 
+  openDialog() {
+    this.dialog.open(PrintSlipDialogComponent, {
+      data: {
+        animal: 'panda',
+        items: this.subItemsArray,
+        totalAmount: this.total(),
+        orderDate: this.orderDate,
+        orderNumber : this.orderNumber
+      },
+    });
+  }
+
   onSubmitSubItemForm(){
-    let json = JSON.stringify({date: new Date()});
+    if(this.subItemsArray.length > 0 ){
+      let json = JSON.stringify({date: new Date()});
     let obj = JSON.parse(json)
     this.orderNumber = Date.now()
     this.orderDate= obj.date = new Date(obj.date),
@@ -97,15 +109,18 @@ export class OrderingComponent implements OnInit {
         orderNumber : this.orderNumber
       }).subscribe(
         (res) => {
-          console.log("res===>>",res)
           this.snackbar.open("Order Placed!",'success')
-          this.placeOrder()
           // this.subItemForm.reset()
+          this.openDialog()
         }, (error) => {
           console.log(error);
         });
     
   }
-
+  else{
+    this.snackbar.open("Please Select Items!",'error')
+  }
+  }
+    
 
 }
