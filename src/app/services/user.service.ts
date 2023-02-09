@@ -9,8 +9,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class UserService {
 
   // baseUri:string = 'https://thepizza-place.herokuapp.com/api';
-
-  baseUri:string = 'http://localhost:4000/api';
+  baseUri:string = 'https://thepizza-place.netlify.app/api'
+  // baseUri:string = 'http://localhost:4000/api';
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
