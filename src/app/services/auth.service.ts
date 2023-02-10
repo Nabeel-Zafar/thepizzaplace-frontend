@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
   // baseUri:string = 'http://localhost:4000/api';
   //baseUri:string = 'https://thepizza-place.herokuapp.com/api';
-  baseUri:string = 'https://thepizza-place.netlify.app/api'
+  baseUri:string = 'https://thepizzaplace.adaptable.app/api'
   
   login(username: string, password: string): Observable<boolean> {
     return this.http.post<{token: string}>(`${this.baseUri}/auth`, {username: username, password: password})

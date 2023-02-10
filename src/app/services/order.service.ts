@@ -12,7 +12,7 @@ export class OrderService {
 
   // baseUri:string = 'https://thepizza-place.herokuapp.com/api';
 
-  baseUri:string = 'https://thepizza-place.netlify.app/api'
+  baseUri:string = 'https://thepizzaplace.adaptable.app/api'
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
