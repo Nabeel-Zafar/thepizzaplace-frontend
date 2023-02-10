@@ -17,7 +17,7 @@ export class MainItemService {
 
   // Create
   createMainItem(data: any): Observable<any> {
-    console.log('data',data)
+    // console.log('data',data)
     let url = `${this.baseUri}/createMainItem`;
     return this.http.post(url, data)
       .pipe(

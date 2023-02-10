@@ -79,7 +79,7 @@ export class ReportComponent implements OnInit {
 
   search(){
     this.isDisableMainitem = false;
-    console.log(this.range.value)
+    // console.log(this.range.value)
   }
 
   export() {
@@ -89,7 +89,7 @@ export class ReportComponent implements OnInit {
     });
     // get the data as base64 or json object for json type - this will be helpful in ionic or SSR
     this.exportAsService.get(this.exportAsConfig).subscribe(content => {
-      console.log(content);
+      // console.log(content);
     });
   }
 
@@ -107,10 +107,10 @@ export class ReportComponent implements OnInit {
   }
 
   readMainItems(){
-    console.log(this.range.value.start)
+    // console.log(this.range.value.start)
     this.mainItemService.getMainItem().subscribe((data) => {
      this.AllMainItems = data;
-     console.log('this.AllMainItems',this.AllMainItems)
+    //  console.log('this.AllMainItems',this.AllMainItems)
     })   
 
   }
@@ -118,7 +118,7 @@ export class ReportComponent implements OnInit {
   readSubItems(){
     this.subItemService.getSubItem().subscribe((data) => {
      this.AllSubItems = data;
-     console.log('this.AllSubItems',this.AllSubItems)
+    //  console.log('this.AllSubItems',this.AllSubItems)
     })   
 
   }
@@ -151,24 +151,24 @@ export class ReportComponent implements OnInit {
   onChange(id:any) {
     let mainItem = this.AllMainItems.filter(({_id}) => _id === id)
     
-    console.log(mainItem[0]);
+    // console.log(mainItem[0]);
     this.selectedmainItem = mainItem[0]
     // this.departmentService.getDepartment(this.selectedLocation._id).subscribe((res:any) => {
     //   this.departments = res.data
     // })
-    console.log('selectedmainItem',this.selectedmainItem)
+    // console.log('selectedmainItem',this.selectedmainItem)
     this.isDisableSubitem = false
   }
   
   onChangeSubItems(id:any) {
     let subItem = this.AllSubItems.filter(({_id}) => _id === id)
     
-    console.log(subItem[0]);
+    // console.log(subItem[0]);
     this.selectedsubItem = subItem[0]
     // this.departmentService.getDepartment(this.selectedLocation._id).subscribe((res:any) => {
     //   this.departments = res.data
     // })
-    console.log('selectedmainItem',this.selectedsubItem)
+    // console.log('selectedmainItem',this.selectedsubItem)/
   }
 
   getDate(date:any){

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userStatus = JSON.parse(localStorage.getItem('access_token') || '{}' )
-    console.log('userStatus',this.userStatus.status.IsAdmin)
+    // console.log('userStatus',this.userStatus.status.IsAdmin)
   }
 
   logout() {

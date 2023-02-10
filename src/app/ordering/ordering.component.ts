@@ -49,15 +49,15 @@ export class OrderingComponent implements OnInit {
   }
 
   onClick(event: any, subItems: any) {
-    console.log(event)
-    console.log("-->>", subItems)
+    // console.log(event)
+    // console.log("-->>", subItems)
     if (subItems) {
       if (this.subItemsArray.find(f => f._id === subItems._id)) {
         this.subItemsArray = this.subItemsArray.filter(r => r._id !== subItems._id);
       } else this.subItemsArray.push({ ...subItems, qtyTotal: 1 })
     }
-    console.log(this.subItemsArray);
-    console.log(this.mainItem)
+    // console.log(this.subItemsArray);
+    // console.log(this.mainItem)
   }
 
   total() {
@@ -73,7 +73,7 @@ export class OrderingComponent implements OnInit {
   readOrders() {
     this.orderService.getMenu().subscribe((data: any) => {
       this.allMenu = data;
-      console.log('this.allMenu', this.allMenu)
+      // console.log('this.allMenu', this.allMenu)
    
     })
 

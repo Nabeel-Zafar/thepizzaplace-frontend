@@ -31,7 +31,7 @@ export class ReportService {
   }
 
   getOrdersByNumber(serachByOrder) {
-    console.log('serachByOrder',serachByOrder)
+    // console.log('serachByOrder',serachByOrder)
     let url = `${this.baseUri}/serachByOrder/${serachByOrder}`;
     return this.http.post(url,serachByOrder)
       .pipe(
@@ -40,7 +40,7 @@ export class ReportService {
   }
 
   createOrder(data: any): Observable<any> {
-    console.log('data',data)
+    // console.log('data',data)
     let url = `${this.baseUri}/createOrder`;
     return this.http.post(url, data)
       .pipe(

@@ -17,7 +17,7 @@ export class CreateDealsService {
   constructor(private http: HttpClient) { }
 
   createDeal(data: any): Observable<any> {
-    console.log('data',data)
+    // console.log('data',data)
     let url = `${this.baseUri}/createDeals`;
     return this.http.post(url, data)
       .pipe(

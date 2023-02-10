@@ -14,7 +14,7 @@ export class AuthService {
     return this.http.post<{token: string}>(`${this.baseUri}/auth`, {username: username, password: password})
       .pipe(
         map(result => {
-          console.log('result',result)
+          // console.log('result',result)
           localStorage.setItem('access_token', JSON.stringify(result));
           return true;
         })

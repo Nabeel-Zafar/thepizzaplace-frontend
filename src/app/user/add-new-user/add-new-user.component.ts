@@ -35,7 +35,7 @@ export class AddNewUserComponent implements OnInit {
   }
 
   submit() {
-    console.log('this.myForm.value',this.myForm.value)
+    // console.log('this.myForm.value',this.myForm.value)
     // if (!this.myForm.value.FullName || !this.myForm.value.EmailAdd || !this.myForm.value.Password || !this.myForm.value.ContactNo || !this.myForm.value.Address) {
     //   this.snackbar.open("Please Add Compulsory Details!",'error')
     // } 

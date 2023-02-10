@@ -15,7 +15,7 @@ export class SubItemService {
   constructor(private http: HttpClient) { }
 
   createSubItem(data: any): Observable<any> {
-    console.log('data',data)
+    // console.log('data',data)
     let url = `${this.baseUri}/createSubItem`;
     return this.http.post(url, data)
       .pipe(

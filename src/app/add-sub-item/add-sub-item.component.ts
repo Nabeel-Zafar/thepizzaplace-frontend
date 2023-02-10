@@ -81,7 +81,7 @@ export class AddSubItemComponent implements OnInit {
   readMainItems(){
     this.mainItemService.getMainItem().subscribe((data) => {
      this.AllMainItems = data;
-     console.log('this.AllMainItems',this.AllMainItems)
+    //  console.log('this.AllMainItems',this.AllMainItems)
     //  console.log('this.dataSource.data',this.dataSource.data)
     //  this.dataSource = new MatTableDataSource(this.AllMainItems);
     //  this.dataSource.paginator = this.paginator;
@@ -95,12 +95,12 @@ export class AddSubItemComponent implements OnInit {
   onChange(id:any) {
     let mainItem = this.AllMainItems.filter(({_id}) => _id === id)
     
-    console.log(mainItem[0]);
+    // console.log(mainItem[0]);
     this.selectedmainItem = mainItem[0]
     // this.departmentService.getDepartment(this.selectedLocation._id).subscribe((res:any) => {
     //   this.departments = res.data
     // })
-    console.log('selectedmainItem',this.selectedmainItem)
+    // console.log('selectedmainItem',this.selectedmainItem)
   }
 
   onSubmitSubItemForm(){
@@ -127,7 +127,7 @@ export class AddSubItemComponent implements OnInit {
   readSubItems(){
     this.subItemService.getSubItem().subscribe((data) => {
      this.AllSubItems = data;
-     console.log('this.AllSubItems',this.AllSubItems)
+    //  console.log('this.AllSubItems',this.AllSubItems)
     //  console.log('this.dataSource.data',this.dataSource.data)
      this.dataSource = new MatTableDataSource(this.AllSubItems);
     //  this.dataSource.paginator = this.paginator;
@@ -182,7 +182,7 @@ export class AddSubItemComponent implements OnInit {
   }
 
   edit(data){
-    console.log('data',data)
+    // console.log('data',data)
     this.editedSubItemID = data._id
     this.editedMainItemName = data.mainItem.mainItemName
     this.editedMainItemID = data.mainItem.ID

@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
     this.username = this.loginForm.value.username
     this.password = this.loginForm.value.password
     this.loginSubscriber = this.auth.login(this.username, this.password).subscribe((res : any)=>{
-      console.log('res1',res)
+      // console.log('res1',res)
       if(res && res.status){
-        console.log('res2',res)
+        // console.log('res2',res)
         localStorage.setItem("token",res.user.token)
         localStorage.setItem("userData",JSON.stringify(res.user))
       }else{
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         result => {
           this.router.navigate(['home'])
-          console.log('result',result)
+          // console.log('result',result)
         },
         // err => this.error = 'Could not authenticate'
         err => this.snackbar.open("Error",'error')

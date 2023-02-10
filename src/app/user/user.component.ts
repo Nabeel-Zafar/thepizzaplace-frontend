@@ -87,7 +87,7 @@ export class UserComponent implements OnInit {
   }
 
   submit() {
-    console.log('this.myForm.value',this.myForm.value)
+    // console.log('this.myForm.value',this.myForm.value)
     if (!this.myForm.value.FullName || !this.myForm.value.EmailAdd || !this.myForm.value.Password || !this.myForm.value.ContactNo || !this.myForm.value.Address) {
       this.snackbar.open("Please Add Compulsory Details!",'error')
     } 
@@ -112,12 +112,12 @@ export class UserComponent implements OnInit {
   }
   onChange(event){
     this.selectedRole = event;
-    console.log('event',event)
+    // console.log('event',event)
   }
   getAllUsers(){
     this.userService.getAllUsers().subscribe((data) => {
      this.allUsers = data;
-     console.log('this.allUsers',this.allUsers)
+    //  console.log('this.allUsers',this.allUsers)
     //  console.log('this.dataSource.data',this.dataSource.data)
      this.dataSource = new MatTableDataSource(this.allUsers);
     //  this.dataSource.paginator = this.paginator;
@@ -129,7 +129,7 @@ export class UserComponent implements OnInit {
   }
 
   edit(data){
-    console.log('data',data)
+    // console.log('data',data)
     this.editedUserID = data._id
     this.myForm.patchValue({
       FullName:  data.FullName,

@@ -56,7 +56,7 @@ export class CreateDealsComponent implements OnInit {
   }
 
   onSubmitdealsForm(){
-    console.log('this.dealForm',this.dealForm.value)
+    // console.log('this.dealForm',this.dealForm.value)
     if (!this.dealForm.value.dealName || !this.dealForm.value.dealItem || !this.dealForm.value.dealPrice) {
       this.snackbar.open("Please Add Compulsory Details!",'error')
     }else {
@@ -79,7 +79,7 @@ export class CreateDealsComponent implements OnInit {
   readDeals(){
     this.dealService.getDeals().subscribe((data) => {
      this.AllDeals = data;
-     console.log('this.AllDeals',this.AllDeals)
+    //  console.log('this.AllDeals',this.AllDeals)
     //  console.log('this.dataSource.data',this.dataSource.data)
      this.dataSource = new MatTableDataSource(this.AllDeals);
     //  this.dataSource.paginator = this.paginator;
@@ -117,7 +117,7 @@ export class CreateDealsComponent implements OnInit {
   }
 
   edit(data){
-    console.log('data',data)
+    // console.log('data',data)
     this.dealsID = data._id
     this.dealForm.patchValue({
       dealName: data.dealName,

@@ -58,12 +58,12 @@ export class AddMainItemComponent implements OnInit {
   
 
   onSubmitMainItemForm() {
-    console.log('this.mainItemForm',this.mainItemForm)
+    // console.log('this.mainItemForm',this.mainItemForm)
     this.submitted = true;
     if (!this.mainItemForm.value.mainItemName) {
       this.snackbar.open("Please Add Compulsory Details!",'error')
     } else {
-      console.log('this.mainItemForm.value',this.mainItemForm.value)
+      // console.log('this.mainItemForm.value',this.mainItemForm.value)
       this.mainItemService.createMainItem(this.mainItemForm.value).subscribe(
         (res) => {
           this.snackbar.open("Main Item successfully created!",'success')
@@ -78,7 +78,7 @@ export class AddMainItemComponent implements OnInit {
   readMainItems(){
     this.mainItemService.getMainItem().subscribe((data) => {
      this.AllMainItems = data;
-     console.log('this.AllMainItems',this.AllMainItems)
+    //  console.log('this.AllMainItems',this.AllMainItems)
     //  console.log('this.dataSource.data',this.dataSource.data)
      this.dataSource = new MatTableDataSource(this.AllMainItems);
     //  this.dataSource.paginator = this.paginator;
@@ -114,7 +114,7 @@ export class AddMainItemComponent implements OnInit {
   }
 
   edit(data){
-    console.log('data',data)
+    // console.log('data',data)
     this.editedMainItemID = data._id
     this.mainItemForm.patchValue({
       mainItemName: data.mainItemName,

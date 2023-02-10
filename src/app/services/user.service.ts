@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(data: any): Observable<any> {
-    console.log('data',data)
+    // console.log('data',data)
     let url = `${this.baseUri}/createUser`;
     return this.http.post(url, data)
       .pipe(

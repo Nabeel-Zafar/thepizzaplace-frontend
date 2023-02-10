@@ -23,7 +23,7 @@ export class PrintSlipDialogComponent implements OnInit {
   totalAmount:any;
 
   ngOnInit(): void {
-    console.log("this.data",this.data)
+    // console.log("this.data",this.data)
     this.orderNumber = this.data.orderNumber
     this.orderDate = this.data.orderDate
     this.itemsArray = this.data.items
